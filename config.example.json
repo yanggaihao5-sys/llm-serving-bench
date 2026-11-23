@@ -1,0 +1,11 @@
+{
+  "target": "default",
+  "engine": "vllm",
+  "base_url": "http://127.0.0.1:8000",
+  "model": "<served-model-id>",
+  "runs_root": "runs",
+  "api_key_env": "VLLM_API_KEY",
+  "slo": {"ttft_p95_ms": 2000, "tpot_p95_ms": 50},
+  "defaults": {"input_len": 1024, "output_len": 256, "concurrency": 4,
+               "num_prompts": 200, "warmup": 20, "repeats": 3, "seed": 42}
+}

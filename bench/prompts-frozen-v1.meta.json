@@ -1,0 +1,13 @@
+{
+  "prompt_set": "prompts-frozen-v1.jsonl",
+  "sha256": "51e1a484c4819bdf1a7b16c655c634d17b52ca00b7fd64e50be574e5e4c14f00",
+  "count": 32,
+  "ordered": true,
+  "language": "zh",
+  "description": "32 short Chinese instructions, 8-29 characters, frozen for reproducible A/B benchmarks",
+  "char_len": {
+    "min": 9,
+    "median": 17,
+    "max": 29
+  }
+}

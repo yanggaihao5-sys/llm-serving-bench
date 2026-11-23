@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+runs/
+.locks/
+.tmp-*/
+*.log
+_patch.py
+
+# never commit credentials or endpoint-specific data
+.env
+*.key
+secrets/
+pytest-cache-files-*/
