@@ -32,8 +32,10 @@ The two block-size-64 runs were 25 minutes apart and agreed to 1.2 %, with one w
 a warm-up outlier — so this is a stable property, not a transient.
 
 **Interpretation.** Halving the number of pages did not help any measured path, and actively hurt
-short-request throughput. The official documentation for this engine suggests a modest benefit from
-64; we measured the opposite sign at roughly twice the magnitude. **We did not establish why**, and
+short-request throughput. **[Corrected 2026-11-25]** The engine's documentation carries no
+`block_size` guidance at all (zero mentions in the optimization pages, independently re-verified), so
+the original draft's claim of a contradicting "official suggestion" was wrong — there was nothing to
+contradict. The measured −19 % stands on its own. **We did not establish why**, and
 the block-size-32 baseline was collected the previous day, so the cross-day comparison is labelled
 *observed difference — attribution pending* rather than a clean A/B.
 
