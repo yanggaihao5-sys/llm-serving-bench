@@ -6,7 +6,7 @@ result does not establish**.
 
 **Deployment under study (common to all findings unless stated):** 8 accelerators, 64 GB each,
 fully interconnected; one production MoE LLM served with tensor parallelism 8 + expert parallelism
-(TP8·EP), W8A8 weights; vLLM-Ascend 0.25.1. Benchmarks are client-side, end-to-end, with the frozen
+(TP8·EP), W8A8 weights; vLLM 0.25.1 + vllm-ascend plugin 0.19.1rc2.dev1265+g50e0ce608 (2026-11-26 取证更正 C5-F01：原文「vLLM-Ascend 0.25.1」把主程序版本与插件版本混置). Benchmarks are client-side, end-to-end, with the frozen
 protocol in [METHODOLOGY.md](METHODOLOGY.md).
 
 Absolute throughput values are specific to this machine. The **directions** and the **measurement
@@ -153,7 +153,8 @@ quotable part.
 **Question.** With 8:1 short:long mixed arrivals, does strict priority scheduling protect short
 requests?
 
-**Setup.** 10 interleaved rounds (priority off / on), 40 in-flight clients against 32 server slots
+**Setup.** 10 interleaved rounds (priority off / on), 40 in-flight clients against 40 server slots
+(server `max_num_seqs` was 40 at run time, per 实验登记表 and C-118; 11-19 才定格 32 — 2026-11-26 取证更正 C5-F08)
 so that a queue genuinely forms, 8:1 short:long arrival mix, ≥2 h apart from other load.
 
 | Metric | priority off | priority on | Δ |
@@ -165,7 +166,8 @@ so that a queue genuinely forms, 8:1 short:long arrival mix, ≥2 h apart from o
 
 **Interpretation.** Under overload, strict priority does not make short requests faster — it was
 already serving them first by arrival order. What it does is *displace* queued long requests, and
-with only 8 slots of displacement space (40 in-flight − 32 slots) each displaced request waits
+with zero nominal slot headroom (40 in-flight − 40 slots; the queue forms from the 67-request burst
+per 20 s window, not from slot oversubscription) each displaced request waits
 proportionally longer. Second-order finding: this engine implements strict priority **without a
 `long_max_wait_ms` bound**, so a long request can be deferred indefinitely under sustained
 overload.

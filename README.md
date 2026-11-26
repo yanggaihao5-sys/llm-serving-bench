@@ -101,7 +101,7 @@ Nine results, each with numbers and an explicit "what this does *not* show" — 
 | 6 | Version regression caught by protocol | Throughput flat, **TTFT ×6** — reproducible 3/3, rolled back |
 | 7 | Steady state is a function of load history | Back-to-back runs measure **−2.5 %** for free |
 | 8 | Per-card imbalance | MAX/MIN ≈ 2.0, same card last; HCCS↔utilisation ρ = +0.33 (n.s.) |
-| 9 | Long-context behaviour | Decode flat to 200 K; prefill **convex** (5.0–6.4 K tok/s) |
+| 9 | Long-context behaviour | Decode flat to 200 K; prefill **convex** (4.5–6.4 K tok/s) |
 
 ## Scope and honesty
 
