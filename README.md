@@ -103,6 +103,8 @@ Nine results, each with numbers and an explicit "what this does *not* show" — 
 | 8 | Per-card imbalance | MAX/MIN ≈ 2.0, same card last; HCCS↔utilisation ρ = +0.33 (n.s.) |
 | 9 | Long-context behaviour | Decode flat to 200 K; prefill **convex** (4.5–6.4 K tok/s) |
 
+**Long-form annex:** [docs/结果-B轴漂移统计-20261127.md](docs/结果-B轴漂移统计-20261127.md)— five-class drift taxonomy (cold start / run-time accumulation / anomalous highs / degraded states / time-of-day load) over 20 historical c=32 runs (2026-11-10 … 11-27), with the experiment rules that follow from it.
+
 ## Scope and honesty
 
 - These are **single-cluster, single-model** measurements. The *directions* reproduce; the absolute
